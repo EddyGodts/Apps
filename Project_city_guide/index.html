@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	
+	<!-- Include meta tag to ensure proper rendering and touch zooming -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Sint-Niklaas City Guide</title>
+	
+	<!-- Include telerik stylesheets -->
+	<link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.930/styles/kendo.common.min.css">
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.930/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.930/styles/kendo.mobile.all.min.css" />
+	
+	<!-- Include jQuery Mobile stylesheets -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	
+	<!-- Include own stylesheets -->
+	<link href="styles/mijnstijl.css" rel="stylesheet" type="text/css"/>
+
+	<!-- Include the jQuery library -->
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<!-- Include the jQuery Mobile library -->
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<!-- Include the telerik library -->	
+    <script src="http://kendo.cdn.telerik.com/2015.3.930/js/kendo.all.min.js"></script>
+
+	<!-- Include the phonegap library -->
+	<script src="phonegap.js"></script>
+	
+</head>
+	
+<body>
+
+	<!-- Start of first page: #page-1 -->
+	<div data-role="page" id="page-1">
+
+	<div data-role="header">
+		<h2 class="km-bold-font">Sint-Niklaas Stadgids</h2>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<h5>Maak je keuze...</h5>
+
+		<p><a href="general.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-left" data-role="button" data-transition="slide">Info over de stad</a></p>	
+		<p><a href="#page-3" class="ui-btn ui-corner-all ui-shadow ui-icon-location ui-btn-icon-left" data-role="button" data-transition="slide">Waar ben je...</a></p>	
+		<p><a href="places.html" class="ui-btn ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-left" data-role="button" data-transition="slide">Bezienswaardigheden</a></p>	
+		<p><a href="shopping.html" class="ui-btn ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-left" data-role="button" data-transition="slide">Winkelen</a></p>	
+		<p><a href="#popup-6" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-left" data-role="button" data-rel="dialog" data-transition="pop">Help</a></p>
+	
+	<script>
+
+	</script>
+	
+	</div><!-- /content -->
+	
+	<div data-role="footer">
+		<a id="button6" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-arrow-l ui-btn-icon-left" data-click="logClick" data-role="button">Sluiten</a>
+		<script>
+		function logClick(e) {
+		    var element = document.getElementById('button6');
+			element.innerHTML = "Knop6";
+		}
+		</script>
+	</div><!-- /footer -->
+	
+	</div><!-- /page one -->
+
+	<!-- Start of third page: #page-3 -->
+	<div data-role="page" id="page-3" data-theme="a">
+
+	<div data-role="header">
+		<h1>Huidige positie op kaart</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<p id="map">Positie wordt gezocht...</p>
+	<script>
+  		// Wait for device API libraries to load
+		//
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		// device APIs are available
+		//
+		function onDeviceReady() {
+		navigator.geolocation.getCurrentPosition(createMap, onError);
+		}
+	
+		// createMap Geolocation
+		//
+		function createMap(position) {
+            $("#map").kendoMap({
+                center: [position.coords.latitude, position.coords.longitude],
+                zoom: 5,
+                layers: [{
+                    type: "tile",
+                    urlTemplate: "http://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png",
+                    subdomains: ["a", "b", "c"],
+                    attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap contributors</a>"
+                }],
+                markers: [{
+                    location: [position.coords.latitude, position.coords.longitude],
+                    shape: "pinTarget",
+                    tooltip: {
+                       content: "Sint-Niklaas, Belgium"
+                    }
+                }]
+        });
+		}
+
+		// onError Callback receives a PositionError object
+		//
+		function onError(error) {
+			alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+		}
+	</script>
+	</div><!-- /content -->
+	
+	<div data-role="footer">
+		<a href="index.html" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-direction="reverse" data-role="button" data-theme="b" data-transition="slide">Terug</a>	
+	</div><!-- /footer -->
+	
+	</div><!-- /page three -->
+
+	<!-- Start of page six: #popup-6 -->
+	<div data-role="page" id="popup-6">
+
+	<div data-role="header" data-theme="e">
+		<h1>Help Informatie</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="d">	
+		<h2>Hoe doe je...?</h2>
+		<p>information information information</p>		
+	</div><!-- /content -->
+	
+	<div data-role="footer">
+		<a href="index.html" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-direction="reverse" data-role="button" data-theme="b" data-transition="slide">Terug</a>	
+	</div><!-- /footer -->
+
+	</div><!-- /popup six -->
+		
+</body>
+
+</html>
