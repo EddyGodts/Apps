@@ -6,4 +6,13 @@ Ik ga zien hoeveel tijd ik in dit project kan steken. Ik ben begonnen met een si
 - CSS3 van toepassing
 - Scriping niet van toepassing
 
+------------Béta-------------
+
+- Data word nu geladen via FTP wanneer er wifi aanwezig is: http://home.deds.nl/~jens9/troelant/data.js
+-- Nog steeds bezig om dit in het intern geheugen te schrijven zodat wifi slechts eenmalig nodig is.
+-- De sorting staat momenteel enkel op prijs:
+--- Filter moet op prijs (laag naar hoog) op alfabetische volgorde gebeuren (sorting op het json bestand)
+----Voor drank van de maand moet de prijs van hoog naar laag gebeuren
+---! Iemand die toevallig een goede gratis plugin weet die dit kan. 
+
 
