@@ -1,0 +1,85 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: black;
+	color: #97c010;
+	background-image: url('../img/bgpat.png');
+	font-family: Arial, Helvetica, sans-serif;
+}
+footer {
+	text-align: center;
+}
+section {
+	min-height: 300px;
+}
+nav {
+	list-style-type: none;
+	font-size: 0;
+}
+nav li {
+	display: inline-block;
+}
+nav li a {
+	display: block;
+	font-size: 18px;
+	text-decoration: none;
+}
+[data-role="logo"] {
+	margin: 0 auto;
+	display: block;
+}
+#menu > div {
+	display: block;
+}
+#menu > div > div {
+	background: rgba(238,238,238,0.1);
+}
+#menu > div > div > p span {
+	font-size: 26px;
+	text-shadow: 0 1px 1px rgba(255,255,255,0.1);
+}
+#menu div h3 {
+	display: block;
+	padding: 10px;
+	background: linear-gradient(#9c0, #696); /*     background: linear-gradient(#9b0, #696); */
+	text-shadow: 0 1px 1px rgba(255,255,255,0.2);
+	color: black;
+	font-size: 34px;
+}
+#menu div h3::after {
+	content: "Prijs";
+	position: absolute;
+	right: 10px;
+	font-size: smaller;
+	line-height: 40px;
+}
+#menu div p {
+	display: block;
+	padding: 8px;
+}
+#menu div p:first-child {
+	box-shadow: inset 1px 0 0 rgba(0,0,0,0.2);
+}
+#menu div p:last-child {
+	box-shadow: inset -1px -1px 0 rgba(0,0,0,0.2);
+}
+#menu div p span:nth-child(2) {
+	position: absolute;
+	right: 10px;
+}
+#menu ul {
+	list-style-type: none;
+	font-size: 0;
+}
+#menu ul li {
+	width: 120px;
+	height: 100px;
+	display: inline-block;
+}
+[data-role="coca-cola"] {
+	background-image: url("../img/coca-cola.jpg");
+	background-size: cover;
+	background-position: center;
+}

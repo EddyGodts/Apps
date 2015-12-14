@@ -1,0 +1,9 @@
+Ik ga zien hoeveel tijd ik in dit project kan steken. Ik ben begonnen met een simpele basis en ik ga proberen dit verder op te bouwen:
+
+------------V1------------
+
+- Drankenlijst (text)
+- CSS3 van toepassing
+- Scriping niet van toepassing
+
+
