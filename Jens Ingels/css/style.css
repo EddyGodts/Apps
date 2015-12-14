@@ -25,22 +25,16 @@ nav li a {
 	display: block;
 	font-size: 18px;
 	text-decoration: none;
+	color: white;
 }
 [data-role="logo"] {
 	margin: 0 auto;
 	display: block;
 }
-#menu > div {
+[data-role="menu-text"] {
 	display: block;
 }
-#menu > div > div {
-	background: rgba(238,238,238,0.1);
-}
-#menu > div > div > p span {
-	font-size: 26px;
-	text-shadow: 0 1px 1px rgba(255,255,255,0.1);
-}
-#menu div h3 {
+[data-role="menu-text"] h3 {
 	display: block;
 	padding: 10px;
 	background: linear-gradient(#9c0, #696); /*     background: linear-gradient(#9b0, #696); */
@@ -48,24 +42,31 @@ nav li a {
 	color: black;
 	font-size: 34px;
 }
-#menu div h3::after {
+[data-role="menu-text"] h3::after {
 	content: "Prijs";
 	position: absolute;
 	right: 10px;
 	font-size: smaller;
 	line-height: 40px;
 }
-#menu div p {
+[data-role="menu-content"] {
+	background: rgba(238,238,238,0.1);
+}
+[data-role="menu-text"] [data-role="menu-content"] p {
 	display: block;
 	padding: 8px;
 }
-#menu div p:first-child {
+[data-role="menu-text"] [data-role="menu-content"] p:first-child {
 	box-shadow: inset 1px 0 0 rgba(0,0,0,0.2);
 }
-#menu div p:last-child {
+[data-role="menu-text"] [data-role="menu-content"] p:last-child {
 	box-shadow: inset -1px -1px 0 rgba(0,0,0,0.2);
 }
-#menu div p span:nth-child(2) {
+[data-role="menu-text"] [data-role="menu-content"] > p span {
+	font-size: 26px;
+	text-shadow: 0 1px 1px rgba(255,255,255,0.1);
+}
+[data-role="menu-text"] [data-role="menu-content"] p span:nth-child(2) {
 	position: absolute;
 	right: 10px;
 }
