@@ -1,4 +1,22 @@
-h5 {
-	color:grey
+h2 {
+	color:red;
 	}
+#map-page, #map-canvas { width: 100%; height: 100%; padding: 0; }
+.ui-bar-f {
+	font-size:18px;
+	font-weight: normal;
+	color: blue;
+	background-color: gray;
+	text-align:center;
+}
 
+.ui-body-f {
+	font-weight: bold;
+	color: black;
+	background-color: lightgray;
+}
+
+.ui-page-theme-f {
+	font-weight: bold;
+	background-color: blue;
+}

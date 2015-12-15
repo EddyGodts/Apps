@@ -10,16 +10,18 @@
 	<title>General City Information</title>
 	
 	<!-- Include jQuery Mobile stylesheets -->
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="styles/jquery.mobile-1.4.5.min.css"/>
+	
+	<link rel="stylesheet" type="text/css" href="styles/index.css" />
 	
 	<!-- Include own stylesheets -->
 	<link href="styles/mijnstijl.css" rel="stylesheet" type="text/css"/>
-
+	
 	<!-- Include the jQuery library -->
-	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery.min.js"></script>
 
 	<!-- Include the jQuery Mobile library -->
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
 
 	<!-- Include the phonegap library -->
 	<script src="phonegap.js"></script>
@@ -32,16 +34,56 @@
 	<div data-role="page" id="page-4" data-theme="a">
 
 	<div data-role="header">
-		<h1>Bezienswaardigheden</h1>
+		<div class="ui-bar ui-bar-f">
+			<h1>Bezienswaardigheden</h1>
+		</div>
 	</div><!-- /header -->
 
-	<div data-role="content" data-theme="a">	
-		<p>stadhuis</p>	
-		<p>kerk</p>	
-	</div><!-- /content -->
+	<div data-role="main" class="ui-content" data-theme="f">
+	<div data-role="collapsibleset" data-theme="f" data-content-theme="f">
+    <div data-role="collapsible">
+    <h2>Religieuze bouwwerken</h2>
+        <ul data-role="listview" data-divider-theme="b">
+            <li><a href="places/sint-nicolaaskerk.html">Sint-Nicolaaskerk</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Onze-Lieve-Vrouwekerk</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Sint-Jozef-Klein-Seminarie</a></li>
+        </ul>
+    </div>
+    <div data-role="collapsible">
+    <h2>Burgerlijke bouwwerken</h2>
+        <ul data-role="listview" data-divider-theme="b">
+            <li><a href="places/sint-nicolaaskerk.html">Grote Markt</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Stadhuis</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Kasteel Walburg</a></li>
+          	<li><a href="places/sint-nicolaaskerk.html">Cipierage</a></li>
+       </ul>
+    </div>
+   <div data-role="collapsible">
+    <h2>Musea</h2>
+	<p></p>
+        <ul data-role="listview" data-divider-theme="b">
+            <li><a href="places/sint-nicolaaskerk.html">Mercatormuseum</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Salons voor Schone Kunsten</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Huis van de Sint</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Historisch pijp- en tabakmuseum</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Cultuurhistorisch museum SteM Zwijgershoek</a></li>
+        </ul>
+    </div>
+   <div data-role="collapsible">
+    <h2>Art deco - art nouveau</h2>
+		<p>In Sint-Niklaas zijn een paar voorbeelden te vinden van de art-deco- en art-nouveaustijl. In de late 19de eeuw was Sint-Niklaas een bloeiend centrum voor de textielnijverheid. Vele rijke lieden lieten zich grote huizen bouwen in de stijl naar de toenmalige mode. De huizen rond de Monseigneur Stillemansstraat zijn alle geklasseerd en geven een fraai beeld van de levensstandaard van de Sint-Niklase burgerij van weleer. Ook sommige religieuze gebouwen zijn opgetrokken in deze stijl, zo ook de Broederschool in de Nieuwstraat, en een deel van de Normaalschool in de Kasteelstraat. De Christus Koningkerk (1938) in de Heistraat is een fraai voorbeeld van het modernisme.</p>
+		<p>Het huis van Edmond Meert, Stationsstraat 85 (1928-'29), was het winterverblijf van een rijke familie van textielfabrikanten. In de jaren 80 werd het pand gekocht door de stad, die er haar kunstcollectie onderbracht (Salons voor Schone Kunsten). Andere merkwaardige gebouwen in het stadscentrum zijn o.m. de zeventiende-eeuwse Cipierage, het Oud-Parochiehuis en het Landhuis op de Grote Markt.</p>
+        <ul data-role="listview" data-divider-theme="b">
+            <li><a href="places/sint-nicolaaskerk.html">Monseigneur Stillemansstraat</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Broederschool</a></li>
+           	<li><a href="places/sint-nicolaaskerk.html">Huis van Edmond Meert</a></li>
+        </ul>
+    </div>
+ 	</div>
+	</div>
 	
-	<div data-role="footer">
-		<a href="index.html" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-direction="reverse" data-role="button" data-theme="b" data-transition="slide">Terug</a>	
+	<div data-role="footer" data-theme="f">
+		<a href="index.html" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back" data-theme="b" data-transition="slide">Terug</a>	
 	</div><!-- /footer -->
 	
 	</div><!-- /page four -->
