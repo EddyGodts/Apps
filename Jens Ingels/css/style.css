@@ -28,7 +28,7 @@ footer {
     z-index: -1;
 	background: black;
 }
-footer p {
+footer > p {
 	position: absolute; 
     bottom: 10px;
 	left: 10%;
@@ -40,6 +40,10 @@ section {
 nav {
 	list-style-type: none;
 	font-size: 0;
+	-moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 nav li {
 	display: inline-block;

@@ -7,79 +7,7 @@
 		<link rel="stylesheet" href="css/style.css">
 		<script src="js/jquery-2.1.4.min.js"></script>
 		<script src="http://home.deds.nl/~jens9/troelant/data.js"></script>
-		<script>
-		toEuro = function(value){
-			if (value === 0) {
-				return "€ ?,??";
-			} else {
-				value = value.toLocaleString('sgn-BE-NL', {minimumFractionDigits: 2});
-				return "€ " + value;
-			}
-		}
-		filterData = function(){
-			/*
-			var sortdata = data.drankenlijst.datum["2015-12"].slice(0);
-			sortdata.sort(function(a,b) {
-				var x = a.drank.toLowerCase();
-				var y = b.drank.toLowerCase();
-				return x < y ? -1 : x > y ? 1 : 0;
-			});
-			*/
-			var sortdata = data.drankenlijst.datum["2015-12"].slice(0);
-				sortdata.sort(function(a,b) {
-					return a.prijs - b.prijs;
-				});
-			return sortdata;
-		}
-		/*
-		toSort = function(a,b){
-		   var aPrice = a.prijs;
-		   var bPrice = b.prijs;
-		   return ((aPrice < bPrice) ? -1 : ((aPrice > bPrice) ? 1 : 0));
-		}
-		toSort(data.drankenlijst.datum["2015-12"][0], data.drankenlijst.datum["2015-12"][3]);
-		*/
-		
-		/*
-		data.drankenlijst.datum["2015-12"]
-		var sortable = [];
-		for (var prijs in data.drankenlijst.datum["2015-12"])
-			  sortable.push([prijs, data.drankenlijst.datum["2015-12"][prijs]])
-		sortable.sort(function(a, b) {return a[1] - b[1]})
-		*/
-		
-		/*
-		data.drankenlijst.datum["2015-12"]
-var sortable = [];
-for (var prijs in data.drankenlijst.datum["2015-12"])
-      sortable.push([prijs, data.drankenlijst.datum["2015-12"][prijs]])
-sortable.sort(function(a, b) {return a[1] - b[1]})
-
-*/
-		var drankvdmaand="", bier="", frisdrank="", overige="";
-		$( document ).ready(function(){
-			sortdata = filterData();
-			$.each( sortdata, function( key, value ) {
-				if (value.categorie === "drankvdmaand") {
-					console.log("<p id='" + key + "'><span>" + value.drank + "</span><span>" + toEuro(value.prijs) + "</span></p>");
-					drankvdmaand += "<p id='" + key + "'><span>" + value.drank + "</span><span>" + toEuro(value.prijs) + "</span></p>";
-				}
-				if (value.categorie === "bier") {
-					bier += "<p id='" + key + "'><span>" + value.drank + "</span><span>" + toEuro(value.prijs) + "</span></p>";
-				}
-				if (value.categorie === "frisdrank") {
-					frisdrank += "<p id='" + key + "'><span>" + value.drank + "</span><span>" + toEuro(value.prijs) + "</span></p>";
-				}
-				if (value.categorie === "overige") {
-					overige += "<p id='" + key + "'><span>" + value.drank + "</span><span>" + toEuro(value.prijs) + "</span></p>";
-				}
-			});
-			$('[data-role="menu-content"]').eq(0).html(drankvdmaand);
-			$('[data-role="menu-content"]').eq(1).html(bier);
-			$('[data-role="menu-content"]').eq(2).html(frisdrank);
-			$('[data-role="menu-content"]').eq(3).html(overige);
-		});
-		</script>
+		<script src="js/index.js"></script>
 		<title>Drankenlijst Troelant</title>
 	</head>
 	<body>
@@ -95,57 +23,16 @@ sortable.sort(function(a, b) {return a[1] - b[1]})
 			<section id="menu">
 				<div data-role="menu-text">
 					<h3>Drank van de maand</h3>
-					<div data-role="menu-content">
-						<p><span>Triple Karmeliet</span><span>€ 2,50</span></p>
-						<p><span>Cubanusto</span><span>€ 1,50</span></p>
-						<p><span>Cava</span><span>€ ?,??</span></p>
-						<p><span>Witte wijn</span><span>€ ?,??</span></p>
-					</div>
+					<div data-role="menu-content"></div>
 					<h3>Bier</h3>
-					<div data-role="menu-content">
-						<p><span>Jupiler</span><span>€ 1,00</span></p>
-						<p><span>Stella</span><span>€ 1,00</span></p>
-						<p><span>Kriek</span><span>€ 1,50</span></p>
-						<p><span>Palm</span><span>€ 1,50</span></p>
-						<p><span>Duvel</span><span>€ 2,00</span></p>
-						<p><span>Hoegaarden rosé</span><span>€ ?,??</span></p>
-						<p><span>Spenoas</span><span>€ ?,??</span></p>
-					</div>
+					<div data-role="menu-content"></div>
 					<h3>Frisdrank</h3>
-					<div data-role="menu-content">
-						<p><span>Cola</span><span>€ 1,00</span></p>
-						<p><span>Cola zero</span><span>€ 1,00</span></p>
-						<p><span>Ice thea</span><span>€ 1,00</span></p>
-						<p><span>Gini</span><span>€ 1,00</span></p>
-						<p><span>Tonic</span><span>€ 1,00</span></p>
-						<p><span>Plat water</span><span>€ 1,00</span></p>
-						<p><span>Bruis water</span><span>€ 1,00</span></p>
-						<p><span>Looza ace</span><span>€ 1,00</span></p>
-					</div>
+					<div data-role="menu-content"></div>
 					<h3>Overige</h3>
-					<div data-role="menu-content">
-						<p><span>Chips</span><span>€ 1,00</span></p>
-					</div>
+					<div data-role="menu-content"></div>
 				</div>
-				<ul style="display: none;"><!--
-				
-				Check behavior local storage
-				
-				-->
-					<li data-role="coca-cola" data-format="big"></li>
-					<li data-role="coca-cola" data-format="tiny"></li>
-					<li data-role="coca-cola" data-format="default"></li>
-					<li data-role="coca-cola"></li>
-					<li data-role="coca-cola"></li>
-					<li data-role="coca-cola"></li>
-					<li data-role="coca-cola"></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ul>
 			</section>
-			<section id="contact">
+			<section id="drankvdmaand">
 				
 			</section>
 		</main>
