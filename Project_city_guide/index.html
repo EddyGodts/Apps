@@ -10,7 +10,7 @@
 	<!-- , target-densitydpi=device-dpi -->
 
 	<title>Sint-Niklaas City Guide</title>
-	
+
 	<!-- Include telerik stylesheets  -->
 	<link rel="stylesheet" href="styles/kendo.common.min.css"/>
     <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.default.min.css"/>
@@ -93,6 +93,13 @@
 		<a id="button6" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-arrow-l ui-btn-icon-left">Sluiten</a>
 		<script type="text/javascript">
 		$(document).ready(function(){
+			var docHeight = $(window).height();
+			var footerHeight = $('#footer').height();
+			var footerTop = $('#footer').position().top + footerHeight;
+   
+			if (footerTop < docHeight) {
+				$('#footer').css('margin-top', 10 + (docHeight - footerTop) + 'px');
+				}
 			document.addEventListener("deviceready", onDeviceReady, false); 
 			$("#button6").on("click", function(){
 			//	alert("The button was clicked.");
