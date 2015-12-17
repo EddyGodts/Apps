@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<style>
+		.target {
+			cursor: pointer;
+		}
+		[data-role="drank-img"] {
+			position: fixed;
+			left: 10%;
+			right: 10%;
+			display: none;
+			width: 400px;
+			height: 400px;
+			background-image: url("jupiler.jpg");
+			background-size: auto 400px;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+		[data-role="drank-img"].show {
+			display: block;
+			z-index: 10;
+			cursor: pointer;
+		}
+		</style>
+	</head>
+	<body>
+		<p><span class="target" data-source="jupiler.jpg">Jupiler</span></p>
+		<p><span class="target" data-source="cola.jpg">Cola</span></p>
+		<div data-role="drank-img"></div>
+		<script>
+		var mySource, mySourceP;
+		$( ".target" ).click(function() {
+			mySource = $(this).attr("data-source");
+			if (mySourceP !== mySource) {
+				$( "[data-role='drank-img']" ).removeClass( "show" );
+			}
+			image = "url('" + mySource + "')";
+			$( "[data-role='drank-img']" ).css( "background-image", image );
+			$( "[data-role='drank-img']" ).toggleClass( "show" );
+			mySourceP = mySource;
+		});
+		$( "[data-role='drank-img']" ).click(function() {
+			$( this ).removeClass( "show" );
+		});
+		</script>
+	</body>
+</html>
