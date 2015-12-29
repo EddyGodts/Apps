@@ -17,27 +17,32 @@
 	<link rel="stylesheet" href="styles/kendo.mobile.all.min.css"/>
 	
 	<!-- Include jQuery Mobile stylesheets -->
-	<link rel="stylesheet" href="styles/jquery.mobile-1.4.5.min.css"/>
-	
+	<link rel="stylesheet" href="styles/jquery.mobile-1.4.5.css"/>
+
+	<!-- Include index stylesheets -->	
 	<link rel="stylesheet" type="text/css" href="styles/index.css" />
 	
 	<!-- Include own stylesheets -->
 	<link href="styles/mijnstijl.css" rel="stylesheet" type="text/css"/>
 	
-	<!-- Include the jQuery library 
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
-	<script src="js/jquery.min.js"></script>
+	<!-- Include the jQuery library -->
+	<script src="js/jquery-1.9.1.min.js"></script>
 
+	<div id="loading-message></div>
+	<!-- Include index libary -->
 	<script src="js/index.js"></script>
-		
-	<!-- Include the jQuery Mobile library -->
+	
+	<script src="js/data_lijsten.js"></script>
+	
 	<script>
+	<!-- Solution for problem with Chrome browser -->
     $(document).bind('mobileinit',function(){
         $.mobile.changePage.defaults.changeHash = false;
         $.mobile.hashListeningEnabled = false;
         $.mobile.pushStateEnabled = false;
     });
-	</script>
+	</script>	
+	<!-- Include the jQuery Mobile library -->
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
 
  	<!-- Include the telerik library -->	
@@ -45,14 +50,22 @@
 
 	<!-- Include the phonegap library -->
 	<script type="text/javascript" src="cordova.js"></script>
+	
+	<script>
+	function onBodyLoad(){
+		// alert ("Body wordt geladen");
+		document.addEventListener("deviceready", onDeviceReady, false); 
+		}
+	function onDeviceReady(){
+	}
+	</script>
 
 </head>
 	
-<body>
+<body onload="onBodyLoad()">
 
 	<!-- Initialize... -->
-	
-	<!-- 
+	<!--
     <div class="app">
         <h1>Loading...</h1>
        <div id="deviceready" class="blink">
@@ -65,8 +78,8 @@
     </script> 
 	-->
 		
-	<!-- Start of first page: #page-1 -->
-	<div data-role="page" id="page-1">
+	<!-- Start of page: #start-page ======================================================================= -->
+	<div data-role="page" id="start-page">
 
 	<div data-role="header">
 		<div class="ui-bar ui-bar-f">
@@ -74,66 +87,66 @@
 		</div>
 	</div><!-- /header -->
 
-	<div data-role="content" data-theme=f>	
+	<div data-role="content">	
 		<h4>Maak je keuze...</h4>
-
-		<p><a href="general.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-left" data-transition="slide">Info over de stad</a></p>	
-		<p><a href="#map-page" class="ui-btn ui-corner-all ui-shadow ui-icon-location ui-btn-icon-left" data-transition="slide">Waar ben je...</a></p>	
-		<p><a href="places.html" class="ui-btn ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-left" data-transition="slide">Bezienswaardigheden</a></p>	
-		<p><a href="shopping.html" class="ui-btn ui-corner-all ui-shadow ui-icon-grid ui-btn-icon-left" data-transition="slide">Winkelen</a></p>	
-		<p><a href="#popup-6" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-left" data-rel="dialog" data-transition="pop">Help</a></p>
-	
-	<script>
-
-	</script>
-	
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-theme=f>
-		<a id="button6" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-arrow-l ui-btn-icon-left">Sluiten</a>
-		<script type="text/javascript">
+		<p><a href="general.html" class="ui-btn ui-btn-f ui-corner-all ui-shadow ui-icon-info ui-btn-icon-left" data-transition="slide">Info over de stad</a></p>	
+		<p><a href="#map-page" class="ui-btn ui-btn-f ui-corner-all ui-shadow ui-icon-location ui-btn-icon-left" data-transition="slide">Waar ben je...</a></p>
+		<p><a href="#places-page" class="ui-btn ui-btn-f ui-corner-all ui-shadow ui-icon-bullets ui-btn-icon-left" data-transition="slide">Bezienswaardigheden</a></p>	
+		<p><a href="#shops-page" class="ui-btn ui-btn-f ui-corner-all ui-shadow ui-icon-shop ui-btn-icon-left" data-transition="slide">Winkelen</a></p>	
+		<!-- <p><a href="#help-page" class="ui-btn ui-btn-f ui-corner-all ui-shadow ui-icon-comment ui-btn-icon-left" data-rel="dialog" data-transition="pop">Help</a></p> -->
+		<p><a href="#help-page" class="ui-btn ui-btn-f ui-corner-all ui-shadow ui-icon-comment ui-btn-icon-left" data-transition="slide">Help</a></p>
+		<p><a id="button-menu-exit" class="ui-btn ui-btn-f ui-corner-all ui-shadow ui-icon-power ui-btn-icon-left">Stop</a>
+		<script>
 		$(document).ready(function(){
-			var docHeight = $(window).height();
-			var footerHeight = $('#footer').height();
-			var footerTop = $('#footer').position().top + footerHeight;
-   
-			if (footerTop < docHeight) {
-				$('#footer').css('margin-top', 10 + (docHeight - footerTop) + 'px');
-				}
-			document.addEventListener("deviceready", onDeviceReady, false); 
-			$("#button6").on("click", function(){
-			//	alert("The button was clicked.");
+			$("#button-menu-exit").on("click", function(){
 				navigator.app.exitApp();
 			});
 		});
 		</script>
-
+	</div><!-- /content -->
+	
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="true">
+	<a href="#start-page" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-notext" data-transition="slide">Home</a>
+	<a href="general.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext" data-transition="slide">Info</a>
+	<a href="#map-page" class="ui-btn ui-corner-all ui-shadow ui-icon-location ui-btn-icon-notext" data-transition="slide">Positie</a>
+	<a href="#places-page" class="ui-btn ui-corner-all ui-shadow ui-icon-bullets ui-btn-icon-notext" data-transition="slide">Plaatsen</a>
+	<a href="#shops-page" class="ui-btn ui-corner-all ui-shadow ui-icon-shop ui-btn-icon-notext" data-transition="slide">Winkels</a>
+	<a href="#help-page" class="ui-btn ui-corner-all ui-shadow ui-icon-comment ui-btn-icon-notext" data-transition="slide">Help</a>
+	<a id="button-index-exit" class="ui-btn ui-corner-all ui-shadow ui-icon-power ui-btn-icon-notext" data-transition="slide">Stop</a>
+	<script>
+	$(document).ready(function(){
+		$("#button-index-exit").on("click", function(){
+			navigator.app.exitApp();
+		});
+	});
+	</script>
 	</div><!-- /footer -->
 	
-	</div><!-- /page one -->
+	</div>
+	<!-- End of page: #start-page -->
 
-	<!-- Start of third page: #page-3 -->
-	<div data-role="page" id="map-page" data-url="map-page">
+	<!-- Start of third page: #map-page ======================================================================= -->
+	<div data-role="page" id="map-page">
 	
-	<div data-role="header" data-theme=f>
+	<div data-role="header">
 		<div class="ui-bar ui-bar-f">
-			<a href="index.html" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back" data-theme="b" data-transition="slide">Terug</a>	
-			<h1>Huidige positie op kaart</h1>
+		<h1>Huidige positie op kaart</h1>
 		</div>
-	</div><!-- /header -->	
+	</div><!-- /header -->
 
 	<div data-role="content">	
-	<p id="map">Positie wordt gezocht...</p>
+	<p id="map" style="height: 500px;">Positie wordt gezocht...</p>
 	<script>
   		// Wait for device API libraries to load
 		//
-		document.addEventListener("deviceready", onDeviceReady, false);
+		//document.addEventListener("deviceready", onDeviceReady, false);
 
 		// device APIs are available
 		//
-		function onDeviceReady() {
+		$(document).ready(function(){
+		//function onDeviceReady() {
 		navigator.geolocation.getCurrentPosition(createMap, onError);
-		}
+		});
 	
 		// createMap Geolocation
 		//
@@ -151,7 +164,7 @@
                     location: [position.coords.latitude, position.coords.longitude],
                     shape: "pinTarget",
                     tooltip: {
-                       content: "Sint-Niklaas, Belgium"
+                       content: "U bevindt zich hier..."
                     }
                 }]
         });
@@ -165,10 +178,390 @@
 	</script>
 	</div><!-- /content -->
 	
-	</div><!-- /page three -->
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="true">
+	<a href="#start-page" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-notext" data-transition="slide">Home</a>
+	<a href="general.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext" data-transition="slide">Info</a>
+	<a href="#map-page" class="ui-btn ui-corner-all ui-shadow ui-icon-location ui-btn-icon-notext" data-transition="slide">Positie</a>
+	<a href="#places-page" class="ui-btn ui-corner-all ui-shadow ui-icon-bullets ui-btn-icon-notext" data-transition="slide">Plaatsen</a>
+	<a href="#shops-page" class="ui-btn ui-corner-all ui-shadow ui-icon-shop ui-btn-icon-notext" data-transition="slide">Winkels</a>
+	<a href="#help-page" class="ui-btn ui-corner-all ui-shadow ui-icon-comment ui-btn-icon-notext" data-transition="slide">Help</a>
+	<a id="button-map-exit" class="ui-btn ui-corner-all ui-shadow ui-icon-power ui-btn-icon-notext" data-transition="slide">Stop</a>
+	<script>
+	$(document).ready(function(){
+		$("#button-map-exit").on("click", function(){
+			navigator.app.exitApp();
+		});
+	});
+	</script>
+	</div><!-- /footer -->
+	
+	</div>
+	<!-- End of page: #map-page -->
 
-	<!-- Start of page six: #popup-6 -->
-	<div data-role="page" id="popup-6">
+	<!-- Start of page: #places-page ======================================================================= -->
+	<div data-role="page" id="places-page">
+	
+	<div data-role="header">
+		<div class="ui-bar ui-bar-f">
+			<h1>Bezienswaardigheden</h1>
+		</div>
+	</div><!-- /header -->
+	
+	<div data-role="content">
+		<p><a href="#places-map-page" class="ui-btn ui-btn-f ui-btn-inline ui-corner-all ui-shadow ui-icon-location ui-btn-icon-left" data-transition="slide">Toon op kaart</a></p>
+        <ul data-role="listview" id="place-list" data-divider-theme="a" data-inset="true">
+            <li data-role="list-divider" data-theme="b" role="heading">Naam</li>
+        </ul>
+    </div>
+
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="true">
+	<a href="#start-page" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-notext" data-transition="slide">Home</a>
+	<a href="general.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext" data-transition="slide">Info</a>
+	<a href="#map-page" class="ui-btn ui-corner-all ui-shadow ui-icon-location ui-btn-icon-notext" data-transition="slide">Positie</a>
+	<a href="#places-page" class="ui-btn ui-corner-all ui-shadow ui-icon-bullets ui-btn-icon-notext" data-transition="slide">Plaatsen</a>
+	<a href="#shops-page" class="ui-btn ui-corner-all ui-shadow ui-icon-shop ui-btn-icon-notext" data-transition="slide">Winkels</a>
+	<a href="#help-page" class="ui-btn ui-corner-all ui-shadow ui-icon-comment ui-btn-icon-notext" data-transition="slide">Help</a>
+	<a id="button-places-exit" class="ui-btn ui-corner-all ui-shadow ui-icon-power ui-btn-icon-notext" data-transition="slide">Stop</a>
+	<script>
+	$(document).ready(function(){
+		$("#button-places-exit").on("click", function(){
+			navigator.app.exitApp();
+		});
+	});
+	</script>
+	</div><!-- /footer -->
+	
+	</div>
+
+	<script>
+	$(document).on("pageinit", "#places-page", function () {
+	//we gebruiken "pageinit" event omdat het slechts éénmaal bij aanmaken van places-page moet uitgevoerd worden
+		//set up string for adding <li/>
+		var li = "";
+		//container for $li to be added
+		$.each(places, function (i, name) {
+			//add the <li> to "li" variable
+			//note the use of += in the variable
+			//meaning I'm adding to the existing data. not replacing it.
+			//store index value in array as id of the <a> tag
+			//li += '<li><a href="#" id="' + i + '" class="info-go">' + name.name + ", " + name.address + '</a></li>';
+			li += '<li><a href="#" id="' + i + '" class="info-go">' + name.name + '</a></li>';
+		});
+		//append list to ul
+		$("#place-list").append(li).promise().done(function () {
+			//wait for append to finish - thats why you use a promise()
+			//done() will run after append is done
+			//add the click event for the redirection to happen to #place-details-page
+			$(this).on("click", ".info-go", function (e) {
+				e.preventDefault();
+				//store the information in the next page's data
+				$("#place-details-page").data("info", places[this.id]);
+				//change the page # to second page. 
+				//Now the URL in the address bar will read index.html#details-page
+				//where #details-page is the "id" of the second page
+				//we're gonna redirect to that now using changePage() method
+				$.mobile.changePage("#place-details-page");
+			});
+
+			//refresh list to enhance its styling.
+			$(this).listview("refresh");
+		});
+	});
+	</script>
+	
+	<!-- End of page:#places-page -->
+
+	<!-- Start of page: #places-map-page ======================================================================= -->
+	<div data-role="page" id="places-map-page">
+	
+	<div data-role="header">
+		<div class="ui-bar ui-bar-f">
+		<h1>Locaties op kaart</h1>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<p id="places-map" style="height: 500px;">Locaties wordt gezocht...</p>
+	<script>
+ 		// createMap Geolocation
+		//
+		$(document).ready(function(){
+            $("#places-map").kendoMap({
+                center: [51.164701, 4.141001],
+                zoom: 14,
+                layers: [{
+                    type: "tile",
+                    urlTemplate: "http://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png",
+                    subdomains: ["a", "b", "c"],
+                    attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap contributors</a>"
+                }],
+				click: onClick,
+                markers: [{
+                    location: [51.161701, 4.149001],
+                    shape: "pinTarget",
+                    tooltip: {
+                       content: "Sint-Niklaas, Kerk1"
+					}
+                 },
+					{
+                    location: [51.165701, 4.145001],
+                    shape: "pinTarget",
+                    tooltip: {
+                       content: "Sint-Niklaas, Gebouw1"
+					}
+				 },
+					{
+                    location: [51.169701, 4.141001],
+                    shape: "pinTarget",
+                    tooltip: {
+                       content: "Sint-Niklaas, Plein1"
+				    }
+				 }]
+			});
+		});
+		
+		function onClick(e) {
+            alert(kendo.format("Click at :: {0}", e.location.toString()));
+        }
+
+		// onError Callback receives a PositionError object
+		//
+		function onError(error) {
+			alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+		}
+	</script>
+	</div><!-- /content -->
+	
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="true">
+	<a href="#places-page" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-transition="slide">Terug naar lijst</a>
+	</div><!-- /footer -->
+	
+	</div>
+	<!-- End of page: #places-map-page -->
+
+	<!-- Start of page: #place-details-page ======================================================================= -->
+	<div data-role="page" id="place-details-page">
+	
+    <div data-role="header" data-theme="f">
+		<div class="ui-bar ui-bar-f">
+		<h1>Plaats details</h1>
+		</div>
+	</div><!-- /header -->
+	
+	<div data-role="content" data-theme="f"> 
+	</div>
+
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="true">
+	<a href="#places-page" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-transition="slide">Terug naar lijst</a>
+	</div><!-- /footer -->
+	
+	<script>
+	$(document).on("pagebeforeshow", "#place-details-page", function () {
+	//we gebruiken "pagebeforeshow" event omdat het telkens de details-page getoond wordt moet uitgevoerd worden
+	//get from data - you put this here when the "a" we clicked in the previous page
+		var info = $(this).data("info");
+		//string to put HTML in
+		var info_view = "";
+		//use for..in to iterate through object
+		for (var key in info) {
+			//Im using grid layout here.
+			//use any kind of layout you want.
+			//key is the key of the property in the object 
+			//if obj = {name: 'k'}
+			//key = name, value = k
+			info_view += '<div class="ui-grid-a"><div class="ui-block-a"><div class="ui-bar field" style="font-weight : bold; text-align: left;">' + key + '</div></div><div class="ui-block-b"><div class="ui-bar value" style="width : 75%">' + info[key] + '</div></div></div>';
+		}
+		//add this to html
+		$(this).find("[data-role=content]").html(info_view);
+	});
+	</script>
+	
+	</div>
+	<!-- End of page: #place-details-page -->
+
+	<!-- Start of page: #shops-page ======================================================================= -->
+	<div data-role="page" id="shops-page">
+	
+	<div data-role="header">
+		<div class="ui-bar ui-bar-f">
+			<h1>Winkel info</h1>
+		</div>
+	</div><!-- /header -->
+	
+	<div data-role="content">
+		<p><a href="#shops-map-page" class="ui-btn ui-btn-f ui-btn-inline ui-corner-all ui-shadow ui-icon-location ui-btn-icon-left" data-transition="slide">Toon op kaart</a></p>
+        <ul data-role="listview" id="shop-list" data-divider-theme="a" data-inset="true">
+            <li data-role="list-divider" data-theme="b" role="heading">Naam</li>
+        </ul>
+    </div>
+
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="true">
+	<a href="#start-page" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-notext" data-transition="slide">Home</a>
+	<a href="general.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext" data-transition="slide">Info</a>
+	<a href="#map-page" class="ui-btn ui-corner-all ui-shadow ui-icon-location ui-btn-icon-notext" data-transition="slide">Positie</a>
+	<a href="#places-page" class="ui-btn ui-corner-all ui-shadow ui-icon-bullets ui-btn-icon-notext" data-transition="slide">Plaatsen</a>
+	<a href="#shops-page" class="ui-btn ui-corner-all ui-shadow ui-icon-shop ui-btn-icon-notext" data-transition="slide">Winkels</a>
+	<a href="#help-page" class="ui-btn ui-corner-all ui-shadow ui-icon-comment ui-btn-icon-notext" data-transition="slide">Help</a>
+	<a id="button-places-exit" class="ui-btn ui-corner-all ui-shadow ui-icon-power ui-btn-icon-notext" data-transition="slide">Stop</a>
+	<script>
+	$(document).ready(function(){
+		$("#button-places-exit").on("click", function(){
+			navigator.app.exitApp();
+		});
+	});
+	</script>
+	</div><!-- /footer -->
+	
+	</div>
+
+	<script>
+	$(document).on("pageinit", "#shops-page", function () {
+	//we gebruiken "pageinit" event omdat het slechts éénmaal bij aanmaken van shops-page moet uitgevoerd worden
+		//set up string for adding <li/>
+		var li = "";
+		//container for $li to be added
+		$.each(shops, function (i, name) {
+			//add the <li> to "li" variable
+			//note the use of += in the variable
+			//meaning I'm adding to the existing data. not replacing it.
+			//store index value in array as id of the <a> tag
+			//li += '<li><a href="#" id="' + i + '" class="info-go">' + name.name + ", " + name.address + '</a></li>';
+			li += '<li><a href="#" id="' + i + '" class="info-go">' + name.name + '</a></li>';
+		});
+		//append list to ul
+		$("#shop-list").append(li).promise().done(function () {
+			//wait for append to finish - thats why you use a promise()
+			//done() will run after append is done
+			//add the click event for the redirection to happen to #details-page
+			$(this).on("click", ".info-go", function (e) {
+				e.preventDefault();
+				//store the information in the next page's data
+				$("#shop-details-page").data("info", shops[this.id]);
+				//change the page # to second page. 
+				//Now the URL in the address bar will read index.html#details-page
+				//where #details-page is the "id" of the second page
+				//we're gonna redirect to that now using changePage() method
+				$.mobile.changePage("#shop-details-page");
+			});
+
+			//refresh list to enhance its styling.
+			$(this).listview("refresh");
+		});
+	});
+	</script>
+	
+	<!-- End of page:#shops-page -->
+
+	<!-- Start of page: #shops-map-page ======================================================================= -->
+	<div data-role="page" id="shops-map-page">
+	
+	<div data-role="header">
+		<div class="ui-bar ui-bar-f">
+		<h1>Locaties op kaart</h1>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<p id="shops-map" style="height: 500px;">Locaties wordt gezocht...</p>
+	<script>
+ 		// createMap Geolocation
+		//
+		$(document).ready(function(){
+            $("#shops-map").kendoMap({
+                center: [51.164701, 4.141001],
+                zoom: 14,
+                layers: [{
+                    type: "tile",
+                    urlTemplate: "http://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png",
+                    subdomains: ["a", "b", "c"],
+                    attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap contributors</a>"
+                }],
+				click: onClick,
+                markers: [{
+                    location: [51.161701, 4.149001],
+                    shape: "pinTarget",
+                    tooltip: {
+                       content: "Sint-Niklaas, Winkel1"
+					}
+                 },
+					{
+                    location: [51.165701, 4.145001],
+                    shape: "pinTarget",
+                    tooltip: {
+                       content: "Sint-Niklaas, Winkel2"
+					}
+				 },
+					{
+                    location: [51.169701, 4.141001],
+                    shape: "pinTarget",
+                    tooltip: {
+                       content: "Sint-Niklaas, Winkel3"
+				    }
+				 }]
+			});
+		});
+		
+		function onClick(e) {
+            alert(kendo.format("Click at :: {0}", e.location.toString()));
+        }
+
+		// onError Callback receives a PositionError object
+		//
+		function onError(error) {
+			alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+		}
+	</script>
+	</div><!-- /content -->
+	
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="true">
+	<a href="#shops-page" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-transition="slide">Terug naar lijst</a>
+	</div><!-- /footer -->
+	
+	</div>
+	<!-- End of page: #shops-map-page -->
+
+	<!-- Start of page: #shop-details-page ======================================================================= -->
+	<div data-role="page" id="shop-details-page">
+	
+    <div data-role="header" data-theme="f">
+		<div class="ui-bar ui-bar-f">
+		<h1>Winkel details</h1>
+		</div>
+	</div><!-- /header -->
+	
+	<div data-role="content" data-theme="f"> 
+	</div>
+
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="true">
+	<a href="#shops-page" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-transition="slide">Terug naar lijst</a>
+	</div><!-- /footer -->
+	
+	<script>
+	$(document).on("pagebeforeshow", "#shop-details-page", function () {
+	//we gebruiken "pagebeforeshow" event omdat het telkens de details-page getoond wordt moet uitgevoerd worden
+	//get from data - you put this here when the "a" we clicked in the previous page
+		var info = $(this).data("info");
+		//string to put HTML in
+		var info_view = "";
+		//use for..in to iterate through object
+		for (var key in info) {
+			//Im using grid layout here.
+			//use any kind of layout you want.
+			//key is the key of the property in the object 
+			//if obj = {name: 'k'}
+			//key = name, value = k
+			info_view += '<div class="ui-grid-a"><div class="ui-block-a"><div class="ui-bar field" style="font-weight : bold; text-align: left;">' + key + '</div></div><div class="ui-block-b"><div class="ui-bar value" style="width : 75%">' + info[key] + '</div></div></div>';
+		}
+		//add this to html
+		$(this).find("[data-role=content]").html(info_view);
+	});
+	</script>
+	
+	</div>
+	<!-- End of page: #shop-details-page -->
+
+	<!-- Start of page: #help-page ======================================================================= -->
+	<div data-role="page" id="help-page">
 
 	<div data-role="header">
 		<div class="ui-bar ui-bar-f">
@@ -176,17 +569,31 @@
 		</div>
 	</div><!-- /header -->
 
-	<div data-role="content" data-theme="f">	
+	<div data-role="content">	
 		<h2>Hoe doe je...?</h2>
-		<p>information information information</p>		
+		<p>information information information</p>
 	</div><!-- /content -->
 	
-	<div data-role="footer">
-		<a href="index.html" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back" data-theme="b" data-transition="slide">Terug</a>	
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="true">
+	<a href="#start-page" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-notext" data-transition="slide">Home</a>
+	<a href="general.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext" data-transition="slide">Info</a>
+	<a href="#map-page" class="ui-btn ui-corner-all ui-shadow ui-icon-location ui-btn-icon-notext" data-transition="slide">Positie</a>
+	<a href="#places-page" class="ui-btn ui-corner-all ui-shadow ui-icon-bullets ui-btn-icon-notext" data-transition="slide">Plaatsen</a>
+	<a href="#shops-page" class="ui-btn ui-corner-all ui-shadow ui-icon-shop ui-btn-icon-notext" data-transition="slide">Winkels</a>
+	<a href="#help-page" class="ui-btn ui-corner-all ui-shadow ui-icon-comment ui-btn-icon-notext" data-transition="slide">Help</a>
+	<a id="button-help-exit" class="ui-btn ui-corner-all ui-shadow ui-icon-power ui-btn-icon-notext" data-transition="slide">Stop</a>
+	<script>
+	$(document).ready(function(){
+		$("#button-help-exit").on("click", function(){
+			navigator.app.exitApp();
+		});
+	});
+	</script>
 	</div><!-- /footer -->
 
-	</div><!-- /popup six -->
-		
+	</div>
+	<!-- End of page: #help-page -->
+	
 </body>
 
 </html>

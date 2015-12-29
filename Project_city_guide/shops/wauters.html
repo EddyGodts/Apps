@@ -7,20 +7,26 @@
 	<!-- Include meta tag to ensure proper rendering and touch zooming -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Leonidas</title>
+	<title>Winkels</title>
 	
 	<!-- Include jQuery Mobile stylesheets -->
 	<link rel="stylesheet" href="../styles/jquery.mobile-1.4.5.min.css"/>
 	
-	<link rel="stylesheet" type="text/css" href="../styles/index.css" />
-	
 	<!-- Include own stylesheets -->
 	<link href="../styles/mijnstijl.css" rel="stylesheet" type="text/css"/>
-
+	
 	<!-- Include the jQuery library -->
-	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-1.9.1.min.js"></script>
 
 	<!-- Include the jQuery Mobile library -->
+	<script>
+	<!-- Solution for problem with Chrome browser -->
+    $(document).bind('mobileinit',function(){
+        $.mobile.changePage.defaults.changeHash = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+    });
+	</script>
 	<script src="../js/jquery.mobile-1.4.5.min.js"></script>
 
 	<!-- Include the phonegap library -->
@@ -30,8 +36,8 @@
 	
 <body>
 
-	<!-- Start of page: #page-leonidas -->
-	<div data-role="page" id="page-leonidas">
+	<!-- Start of page: #page-shop-info -->
+	<div data-role="page" id="page-shop-info">
 
 	<div data-role="header">
 		<div class="ui-bar ui-bar-f">
@@ -39,7 +45,7 @@
 		</div>
 	</div><!-- /header -->
 
-	<div data-role="content" data-theme="f">
+	<div data-role="content">
 		<h2>Ambachtelijk Chocolatier Wauters</h2>
 		<h3>KWALITEIT OM VOOR TE SMELTEN</h3>
 		<img src="chocolatier-wauters.jpg" alt="Chocolatier Wauters" style="width:150px;height:200px;">
@@ -53,8 +59,8 @@
 		Het water loopt je voor minder in de mond. En niet vergeten: Nick is ook meester in het creëren van heuse etalagestukken in chocolade. Vrachtwagens, bomen, valentijntjes, paashazen, strandhuisjes, je kunt het zo gek niet bedenken of hij tovert het uit de kostbare cacao tevoorschijn.</p>	
 	</div><!-- /content -->
 	
-	<div data-role="footer" data-theme="f">
-		<a href="../shopping.html" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back" data-theme="b" data-transition="slide">Terug</a>	
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme=f data-position="fixed" data-fullscreen="true">
+	<a href="../#shops-page" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-transition="slide">Terug naar lijst</a>
 	</div><!-- /footer -->
 	
 	</div><!-- /page two -->

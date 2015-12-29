@@ -1,22 +1,43 @@
 h2 {
 	color:red;
 	}
-#map-page, #map-canvas { width: 100%; height: 100%; padding: 0; }
+/*
+#map-page, #places-map-page { background-color: lightgrey; width: 100%; height: 100%; padding: 0; }
+*/
 .ui-bar-f {
 	font-size:18px;
 	font-weight: normal;
 	color: blue;
-	background-color: gray;
+	background-color: lightblue;
 	text-align:center;
+/*	padding :0px 0px 0px 0px;
+    margin :0px 0px 0px 0px;
+*/
+}
+
+.ui-btn-f {
+	color: black;
+	background-color: grey;
+/*	padding :10px 0px 10px 0px;
+	margin :20px 40px 20px 40px;
+*/
+}
+
+.ui-btn-f:active {
+    padding-top: 10px;
+	background-color: blue;
 }
 
 .ui-body-f {
-	font-weight: bold;
+/*	font-weight: bold;
 	color: black;
-	background-color: lightgray;
+	background-color: green;
+*/
+
 }
 
 .ui-page-theme-f {
 	font-weight: bold;
-	background-color: blue;
+	color: black;
+	background-color: lightgrey;
 }

@@ -4,24 +4,26 @@
 <head>
 	<meta charset="utf-8">
 	
+	<meta name="format-detection" content="telephone=no" />
 	<!-- Include meta tag to ensure proper rendering and touch zooming -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
+	width=device-width, height=device-height" />
+	<!-- , target-densitydpi=device-dpi -->
+	
 	<title>General City Information</title>
 	
 	<!-- Include jQuery Mobile stylesheets -->
 	<link rel="stylesheet" href="styles/jquery.mobile-1.4.5.min.css"/>
-	
-	<link rel="stylesheet" type="text/css" href="styles/index.css" />
-	
+
 	<!-- Include own stylesheets -->
 	<link href="styles/mijnstijl.css" rel="stylesheet" type="text/css"/>
 	
 	<!-- Include the jQuery library -->
-	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-1.9.1.min.js"></script>
 
 	<!-- Include the jQuery Mobile library -->
 	<script>
+	<!-- Solution for problem with Chrome browser -->
     $(document).bind('mobileinit',function(){
         $.mobile.changePage.defaults.changeHash = false;
         $.mobile.hashListeningEnabled = false;
@@ -32,13 +34,12 @@
 
 	<!-- Include the phonegap library -->
 	<script src="phonegap.js"></script>
-	
+
 </head>
 	
 <body>
-
-	<!-- Start of second page: #page-2 -->
-	<div data-role="page" id="page-2">
+	<!-- Start of page: #info-page -->
+	<div data-role="page" id="info-page">
 
 	<div data-role="header">
 		<div class="ui-bar ui-bar-f">
@@ -46,9 +47,9 @@
 		</div>
 	</div><!-- /header -->
 
-	<div data-role="content" data-theme="f">
+	<div data-role="content">
 		<h3>Sint-Niklaas</h3>
-		<p>Sint-Niklaas (Frans: Saint-Nicolas) is een stad in de Belgische provincie Oost-Vlaanderen. De stad is de hoofdstad van het Land van Waas en telt ruim 73.000 inwoners, die Sint-Niklazenaars[1] worden genoemd. De bijnamen van de Sint-Niklazenaren zijn oliezeikers[2], rapenbraders[3] of blauwselmannen[4]. De stad is ook bekend om haar marktplein, het grootste van België.</p>	
+		<p>Sint-Niklaas (Frans: Saint-Nicolas) is een stad in de Belgische provincie Oost-Vlaanderen. De stad is de hoofdstad van het Land van Waas en telt ruim 73.000 inwoners, die Sint-Niklazenaars worden genoemd. De bijnamen van de Sint-Niklazenaren zijn oliezeikers, rapenbraders of blauwselmannen. De stad is ook bekend om haar marktplein, het grootste van België.</p>	
 		<h3>Geschiedenis</h3>
 		<h4>Ontstaan</h4>
 		<p>Hoewel er sporen van voor-Romeinse activiteiten gevonden zijn op het grondgebied van het huidige Sint-Niklaas, lag het regionale centrum in de Romeinse tijd in het nabijgelegen Waasmunster, vermoedelijk vanwege de betere ligging aan de rivier de Durme. De geschiedenis van Sint-Niklaas begint pas in 1217, wanneer de bisschop van Doornik, op advies van lokale geestelijken, een kerk opricht voor de heilige Nicolaas van Myra. De nieuwe parochie was tot medio 16e eeuw ook afhankelijk van het bisdom Doornik. Politiek gezien was het echter onderdeel van het graafschap Vlaanderen. De macht van dat graafschap resulteerde in een snelle economische groei van de stad. In 1241 werd Sint-Niklaas door Johanna van Constantinopel tot administratief centrum van de streek gepromoveerd. Er werd een hoofdcollege geïnstalleerd met zeven schepen en als voorzitter een baljuw. Dit werd gedaan om de regio beter te organiseren zodat ze konden concurreren tegen de heren van Beveren. Een document van 1248 beschrijft dat Margaretha II van Vlaanderen zes bunders grond ten westen van de kerk aan Sint-Niklaas toevoegde met als voorwaarde dat die voor altijd onverdeeld en onbebouwd moesten blijven. Deze voorwaarde verklaart de ongewone omvang van het marktplein vandaag.</p>
@@ -65,11 +66,25 @@
 		<p>In de 18e eeuw profiteerde Sint-Niklaas van de economische vooruitgang onder Oostenrijkse voogdij. In 1764 begon de eerste industriële katoenweverij te werken. Het was de start van een intensieve ontwikkeling van de textielproductie, die Sint-Niklaas omstreeks 1830 transformeerde tot de voornaamste Oost-Vlaamse industriestad na Gent. Aan het einde van de 18e eeuw bracht de Franse Revolutie religieuze intolerantie, ook werd de gemeentelijke administratie door de Fransen gemoderniseerd. In 1803 bracht Napoleon Bonaparte een bezoek aan Sint-Niklaas, dat hij het jaar daarop tot stad bevorderde op grond van het inwoneraantal (circa 11.000). De 19e eeuw werd gekenmerkt door de achteruitgang van de textielbranche door het verlies van de Nederlandse koloniale markten na de Belgische onfhankelijkheid. De aansluiting van de stad op het nationale spoorwegennet rond 1850 bracht een positieve kentering teweeg en was de motor van een krachtige relance en een grootscheepse stadsuitbreiding. Onder andere het huidige stadhuis en de Onze-Lieve-Vrouwekerk werden gedurende die periode gebouwd. Ook het interbellum was een bloeiperiode en verschillende bouwwerken in art deco werden opgetrokken, waaronder enkele in de Monseigneur Stillemansstraat. Na de Tweede Wereldoorlog kwam de textielindustrie pas echt in een crisis, waardoor ze begin 21e eeuw zo goed als volledig verdwenen is. Vandaag is het historische centrum voornamelijk geëvolueerd naar een winkel- en dienstencentrum.</p>
 	</div><!-- /content -->
 	
-	<div data-role="footer" data-theme="f">
-		<a href="index.html" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back" data-theme="b" data-transition="slide">Terug</a>	
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme="f" data-position="fixed" data-fullscreen="false">
+	<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-notext" data-transition="slide">Home</a>
+	<a href="general.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext" data-transition="slide">Info</a>
+	<a href="#map-page" class="ui-btn ui-corner-all ui-shadow ui-icon-location ui-btn-icon-notext" data-transition="slide">Positie</a>
+	<a href="#places-page" class="ui-btn ui-corner-all ui-shadow ui-icon-bullets ui-btn-icon-notext" data-transition="slide">Plaatsen</a>
+	<a href="#shops-page" class="ui-btn ui-corner-all ui-shadow ui-icon-shop ui-btn-icon-notext" data-transition="slide">Winkels</a>
+	<a href="#help-page" class="ui-btn ui-corner-all ui-shadow ui-icon-comment ui-btn-icon-notext" data-transition="slide">Help</a>
+	<a id="button-info-exit" class="ui-btn ui-corner-all ui-shadow ui-icon-power ui-btn-icon-notext" data-transition="slide">Stop</a>
+	<script>
+	$(document).ready(function(){
+		$("#button-info-exit").on("click", function(){
+			navigator.app.exitApp();
+		});
+	});
+	</script>
 	</div><!-- /footer -->
 	
-	</div><!-- /page two -->
+	</div>
+	<!-- End of page: #info-page -->
 	
 </body>
 

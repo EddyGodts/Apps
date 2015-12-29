@@ -7,20 +7,26 @@
 	<!-- Include meta tag to ensure proper rendering and touch zooming -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Leonidas</title>
+	<title>Plaatsen</title>
 	
 	<!-- Include jQuery Mobile stylesheets -->
 	<link rel="stylesheet" href="../styles/jquery.mobile-1.4.5.min.css"/>
 	
-	<link rel="stylesheet" type="text/css" href="../styles/index.css" />
-	
 	<!-- Include own stylesheets -->
 	<link href="../styles/mijnstijl.css" rel="stylesheet" type="text/css"/>
-
+	
 	<!-- Include the jQuery library -->
-	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-1.9.1.min.js"></script>
 
 	<!-- Include the jQuery Mobile library -->
+	<script>
+	<!-- Solution for problem with Chrome browser -->
+    $(document).bind('mobileinit',function(){
+        $.mobile.changePage.defaults.changeHash = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+    });
+	</script>
 	<script src="../js/jquery.mobile-1.4.5.min.js"></script>
 
 	<!-- Include the phonegap library -->
@@ -30,8 +36,8 @@
 	
 <body>
 
-	<!-- Start of page: #page-leonidas -->
-	<div data-role="page" id="page-leonidas" data-theme="a">
+	<!-- Start of page: #page-plaats-info -->
+	<div data-role="page" id="page-plaats-info">
 
 	<div data-role="header">
 		<div class="ui-bar ui-bar-f">
@@ -39,7 +45,8 @@
 		</div>
 	</div><!-- /header -->
 
-	<div data-role="content" data-theme="f">
+
+	<div data-role="content">
 		<h1>Sint-Nicolaaskerk</h1>
 		<p>De Sint-Nicolaaskerk is een kerk in de Belgische stad Sint-Niklaas. Ze is gewijd aan Sint-Nicolaas van Myra, Sint-Barbara en Sint-Johannes Nepomucenus.
 		
@@ -53,10 +60,10 @@
 		<h2>Buitenkant</h2>
 		<p>Buiten de kerk (sacramentsstraat) is een barokke stenen sculptuur van de Aanbidding van het goddelijke Sacrament door twee cherubijntjes.</p>
 
-		</div><!-- /content -->
+	</div><!-- /content -->
 	
-	<div data-role="footer" data-theme="f">
-		<a href="../places.html" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-rel="back" data-theme="b" data-transition="slide">Terug</a>	
+	<div id = "footer" data-role="footer" style="text-align:left;" data-theme=f data-position="fixed" data-fullscreen="true">
+	<a href="../#places-page" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left" data-transition="slide">Terug naar lijst</a>
 	</div><!-- /footer -->
 	
 	</div><!-- /page two -->
